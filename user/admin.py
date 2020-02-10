@@ -9,7 +9,7 @@ from user.models import User, UserInfo
 class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'is_staff')
     list_filter = ('is_staff',)
-    ieldsets = (
+    fieldsets = (
         (None, {'fields': ('email', 'password')}),
         # (_('Personal Info'),{'fields': ('id', )}),
         (
@@ -46,4 +46,4 @@ admin.site.unregister(Group)
 
 # registering custom Models
 admin.site.register(User, UserAdmin)
-admin.site.register(UserAdmin, UserInfoAdmin)
+admin.site.register(UserInfo, UserInfoAdmin)
