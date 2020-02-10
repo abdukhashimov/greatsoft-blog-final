@@ -44,3 +44,18 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    @property
+    def get_profile(self):
+        return "http://localhost:8000" + self.profile.profile_picture.url
+
+
+class UserInfo(models.Model):
+    user = models.OneToOneField(
+        User, related_name='profile',
+        on_delete=models.CASCADE, null=True, blank=True)
+    bio = models.CharField(max_length=255)
+    profile_picture = models.ImageField(upload_to='profiles')
+
+    def __str__(self):
+        return str(self.user)
