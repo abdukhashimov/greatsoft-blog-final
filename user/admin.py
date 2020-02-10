@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group
 from django.utils.translation import gettext as _
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 # #####
-from user.models import User
+from user.models import User, UserInfo
 
 
 class UserAdmin(BaseUserAdmin):
@@ -33,8 +33,17 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
 
 
+class UserInfoAdmin(admin.ModelAdmin):
+    fields = ('bio', 'profile_picture')
+
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        super(UserInfoAdmin, self).save_model(request, obj, form, change)
+
+
 # unregistering Group
 admin.site.unregister(Group)
 
 # registering custom Models
 admin.site.register(User, UserAdmin)
+admin.site.register(UserAdmin, UserInfoAdmin)
