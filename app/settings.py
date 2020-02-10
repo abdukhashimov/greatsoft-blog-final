@@ -19,14 +19,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # end of default apps
+
     # third-party apps
     # end of third party apps
+
     # custom apps
     'user.apps.UserConfig',
     'post.apps.PostConfig',
