@@ -46,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     @property
-    def get_profile(self):
+    def get_profile_picture(self):
         return "http://localhost:8000" + self.profile.profile_picture.url
 
 
