@@ -117,6 +117,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# media url and root setup
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# end of media url and root setup
 
 # custom user model setup
 AUTH_USER_MODEL = 'user.User'
