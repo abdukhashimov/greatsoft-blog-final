@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     # third-party apps
     # end of third party apps
     # custom apps
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
     'post.apps.PostConfig',
     'comment.apps.CommentConfig',
     # end of custom apps
