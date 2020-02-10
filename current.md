@@ -1,5 +1,6 @@
 **Current**
 `Finished: user`
 `Finished: userinfo`
-`Working: post, comment`
+`Finished: post`
+`Working: comment`
 `Inshalloh I will finish them`
