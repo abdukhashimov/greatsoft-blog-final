@@ -113,3 +113,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# custom user model setup
+AUTH_USER_MODEL = 'user.User'
+# end of custom user setup
