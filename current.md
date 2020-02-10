@@ -2,5 +2,12 @@
 `Finished: user`
 `Finished: userinfo`
 `Finished: post`
-`Working: comment`
+`Finished: comment`
+
+<!-- database kind of finished -->
+
+`Current started`
+`User Serializer: create`
+`Post Serializer: create`
+`Comment Serializer: create`
 `Inshalloh I will finish them`
