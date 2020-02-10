@@ -33,4 +33,8 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
 
 
+# unregistering Group
+admin.site.unregister(Group)
+
+# registering custom Models
 admin.site.register(User, UserAdmin)
