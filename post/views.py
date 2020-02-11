@@ -5,12 +5,15 @@ from post.serializers import (
     CategorySerializer,
     TagSerializer
 )
+
 from post.models import Post, Tag, Category
-from post.permissions import IsAuthorOrReadOnly
-from post.pagination import PostPageNumberPagination
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
+from post.pagination import PostPageNumberPagination
 from rest_framework.generics import ListCreateAPIView
+from post.permissions import IsAuthorOrReadOnly, IsAdminOrReadOnly
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 
 
 class PostViewSet(ModelViewSet):
@@ -41,8 +44,10 @@ class PostViewSet(ModelViewSet):
 class TagView(ListCreateAPIView):
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
+    permission_classes = [IsAdminOrReadOnly, ]
 
 
 class CategoryView(ListCreateAPIView):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
+    permission_classes = [IsAdminOrReadOnly, ]

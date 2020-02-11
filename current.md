@@ -20,8 +20,12 @@
 
 <!-- Views -->
 
-`Started with Post views: Finished`
-`Start with category and tags endpoint, admin:create/update/delete/:others :list`
+`Finished: Post views: Finished`
+`Finished: category and tags endpoint, admin:create/update/delete/:others :list`
+
+<!-- User Info endpoints -->
+
+`Started: userinfo`
 
 <!-- Todo -->
 
