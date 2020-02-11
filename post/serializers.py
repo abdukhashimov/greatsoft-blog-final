@@ -55,3 +55,15 @@ class PostCreateSerializer(ModelSerializer):
         model = Post
         fields = ('title', 'thumbnail',
                   'content', 'tag', 'category')
+
+
+class CategorySerializer(ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('name',)
+
+
+class TagSerializer(ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('name',)
