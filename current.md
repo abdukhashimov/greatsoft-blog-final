@@ -20,7 +20,15 @@
 
 <!-- Views -->
 
-`Started with Post views: Working`
+`Started with Post views: Finished`
+`Start with category and tags endpoint, admin:create/update/delete/:others :list`
+
+<!-- Todo -->
+
+`Planning: Comment`
+`Planning: Ckeditor CMS`
+`Planning: JWT`
+`Planning: Deploy`
 
 <!-- end of views -->
 
