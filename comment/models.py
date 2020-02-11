@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.admin.utils import NestedObjects
 
 
-class CommentManager(models.Model):
+class CommentManager(models.Manager):
     def get_parent_comment(self, id):
         return super(
             CommentManager, self
