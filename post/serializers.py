@@ -3,6 +3,7 @@ from rest_framework.serializers import (
     StringRelatedField,
     SerializerMethodField,
     HyperlinkedIdentityField,
+    ModelSerializer
 )
 from comment.serializers import CommentSerializer
 
