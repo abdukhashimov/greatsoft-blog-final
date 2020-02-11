@@ -10,14 +10,14 @@ from comment.serializers import CommentSerializer
 
 class PostListSerializer(ModelSerializer):
     author = StringRelatedField()
-    url = HyperlinkedIdentityField(
-        view_name='post-detail',
-        read_only=True,
-    )
+    # url = HyperlinkedIdentityField(
+    #     view_name='post-detail',
+    #     read_only=True,
+    # )
 
     class Meta:
         model = Post
-        fields = ('url', 'title', 'thumbnail', 'author', 'timestamp')
+        fields = ('title', 'thumbnail', 'author', 'timestamp')
 
 
 class PostDetailSerializer(ModelSerializer):
