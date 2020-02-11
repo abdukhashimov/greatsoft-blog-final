@@ -23,10 +23,6 @@
 `Finished: Post views: Finished`
 `Finished: category and tags endpoint, admin:create/update/delete/:others :list`
 
-<!-- User Info endpoints -->
-
-`Started: userinfo`
-
 <!-- Todo -->
 
 `Planning: Comment`

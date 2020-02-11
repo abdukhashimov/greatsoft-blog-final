@@ -39,5 +39,9 @@ class Comment(models.Model):
         return "{}'s reply".format(str(self.user))
 
     @property
+    def parent_comments(self):
+        return Comment.objects.get_parent_comment(self.id)
+
+    @property
     def child_comments(self):
         return Comment.objects.get_child_comment(self.id)

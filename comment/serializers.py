@@ -1,7 +1,11 @@
+from post.models import Post
+from comment.models import Comment
+from django.contrib.auth import get_user_model
 from rest_framework.serializers import (
     ModelSerializer,
-    SerializerMethodField)
-from comment.models import Comment
+    SerializerMethodField,
+    PrimaryKeyRelatedField,
+)
 
 
 class CommentSerializer(ModelSerializer):
@@ -35,3 +39,17 @@ class CommentSerializer(ModelSerializer):
 
     def get_created_at(self, obj):
         return str(obj.created_at)
+
+
+class CreateCommentSerializer(ModelSerializer):
+    parent = PrimaryKeyRelatedField()
+
+    class Meta:
+        model = Comment
+        fields = ('comment', 'parent')
+
+
+class SaveCommentSerializer(ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
