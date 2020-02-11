@@ -1,23 +1,24 @@
-from post.models import Post
+from post.models import Post, Category, Tag
 from rest_framework.serializers import (
-    StringRelatedField,
-    SerializerMethodField,
     HyperlinkedIdentityField,
-    ModelSerializer
+    PrimaryKeyRelatedField,
+    SerializerMethodField,
+    StringRelatedField,
+    ModelSerializer,
 )
 from comment.serializers import CommentSerializer
 
 
 class PostListSerializer(ModelSerializer):
     author = StringRelatedField()
-    # url = HyperlinkedIdentityField(
-    #     view_name='post-detail',
-    #     read_only=True,
-    # )
+    url = HyperlinkedIdentityField(
+        view_name='post:post-detail',
+        read_only=True,
+    )
 
     class Meta:
         model = Post
-        fields = ('title', 'thumbnail', 'author', 'timestamp')
+        fields = ('url', 'title', 'thumbnail', 'author', 'timestamp')
 
 
 class PostDetailSerializer(ModelSerializer):
@@ -43,3 +44,14 @@ class PostDetailSerializer(ModelSerializer):
             comments[str(index)] = CommentSerializer(comment).data
 
         return comments
+
+
+class PostCreateSerializer(ModelSerializer):
+    tag = PrimaryKeyRelatedField(many=True, queryset=Tag.objects.all())
+    category = PrimaryKeyRelatedField(
+        many=True, queryset=Category.objects.all())
+
+    class Meta:
+        model = Post
+        fields = ('title', 'thumbnail',
+                  'content', 'tag', 'category')
