@@ -7,9 +7,9 @@ from rest_framework.serializers import (
 from comment.serializers import CommentSerializer
 
 
-class PostListSerializer(serializers.ModelSerializer):
-    author = serializers.StringRelatedField()
-    url = serializers.HyperlinkedIdentityField(
+class PostListSerializer(ModelSerializer):
+    author = StringRelatedField()
+    url = HyperlinkedIdentityField(
         view_name='post-detail',
         read_only=True,
     )
@@ -19,11 +19,11 @@ class PostListSerializer(serializers.ModelSerializer):
         fields = ('url', 'title', 'thumbnail', 'author', 'timestamp')
 
 
-class PostDetailSerializer(serializers.ModelSerializer):
-    author = serializers.SerializerMethodField()
-    tag = serializers.StringRelatedField(many=True, read_only=True)
-    category = serializers.StringRelatedField(many=True, read_only=True)
-    comment = serializers.SerializerMethodField()
+class PostDetailSerializer(ModelSerializer):
+    author = SerializerMethodField()
+    tag = StringRelatedField(many=True, read_only=True)
+    category = StringRelatedField(many=True, read_only=True)
+    comment = SerializerMethodField()
 
     class Meta:
         model = Post
