@@ -1,13 +1,16 @@
-from post.models import Post
 from post.serializers import (
     PostDetailSerializer,
     PostCreateSerializer,
     PostListSerializer,
+    CategorySerializer,
+    TagSerializer
 )
+from post.models import Post, Tag, Category
 from post.permissions import IsAuthorOrReadOnly
 from post.pagination import PostPageNumberPagination
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListCreateAPIView
 
 
 class PostViewSet(ModelViewSet):
@@ -33,3 +36,13 @@ class PostViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+
+class TagView(ListCreateAPIView):
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
+
+
+class CategoryView(ListCreateAPIView):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()
