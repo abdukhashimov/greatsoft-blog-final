@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # end of default apps
-
+    'rest_framework',
     # third-party apps
     # end of third party apps
 
