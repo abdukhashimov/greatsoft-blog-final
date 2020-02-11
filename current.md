@@ -14,6 +14,14 @@
 <!-- Checking -->
 
 `Comment:Serializer - checked`
-`Post: Serializer - checking!`
+`Post: DetailSerializer - working!`
+`Post: ListSerializer - needs some care!`
 `User: working`
+
+<!-- Views -->
+
+`Started with Post views: Working`
+
+<!-- end of views -->
+
 `Inshalloh I will finish them`
