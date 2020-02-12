@@ -26,6 +26,7 @@ class PostDetailSerializer(ModelSerializer):
     tag = StringRelatedField(many=True, read_only=True)
     category = StringRelatedField(many=True, read_only=True)
     comment = SerializerMethodField()
+    timestamp = SerializerMethodField()
 
     class Meta:
         model = Post
@@ -45,6 +46,8 @@ class PostDetailSerializer(ModelSerializer):
 
         return comments
 
+    def get_timestamp(self, obj):
+        return str(obj.timestamp)
 
 class PostCreateSerializer(ModelSerializer):
     tag = PrimaryKeyRelatedField(many=True, queryset=Tag.objects.all())

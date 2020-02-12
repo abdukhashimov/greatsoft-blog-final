@@ -13,3 +13,15 @@ class IsAdminOrReadOnly(BasePermission):
         if request.method in SAFE_METHODS:
             return True
         return request.user.is_superuser
+
+
+class IsPostCorrect(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        cust_id = request.data.get('parent')
+        for comment in obj.get_comments:
+            if str(comment.id) == str(cust_id):
+                return True
+            for child_comment in comment.child_comments:
+                if str(child_comment.id) == str(cust_id):
+                    return True
+        return False

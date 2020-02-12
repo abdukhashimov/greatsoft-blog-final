@@ -11,10 +11,10 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from post.pagination import PostPageNumberPagination
 from rest_framework.generics import ListCreateAPIView
-from post.permissions import IsAuthorOrReadOnly, IsAdminOrReadOnly
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from comment.serializers import CreateCommentSerializer, SaveCommentSerializer
+from post.permissions import IsAuthorOrReadOnly, IsAdminOrReadOnly, IsPostCorrect
 
 
 class PostViewSet(ModelViewSet):
@@ -22,12 +22,13 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     permission_classes = [IsAuthenticated, ]
 
-
     def get_permissions(self):
         if self.action == 'list' or self.action == 'retrieve':
             permission_classes = [AllowAny, ]
-        elif self.action in ('create', 'post_comment'):
+        elif self.action == 'create':
             permission_classes = [IsAuthenticated, ]
+        elif self.action == 'post_comment':
+            permission_classes = [IsAuthenticated, IsPostCorrect]
         else:
             permission_classes = [IsAuthorOrReadOnly, ]
         return [permission() for permission in permission_classes]

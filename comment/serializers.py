@@ -5,6 +5,8 @@ from rest_framework.serializers import (
     ModelSerializer,
     SerializerMethodField,
     PrimaryKeyRelatedField,
+    ChoiceField,
+    CharField,
 )
 
 
@@ -15,7 +17,7 @@ class CommentSerializer(ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('user', 'comment', 'replies', 'created_at')
+        fields = ('id', 'user', 'comment', 'replies', 'created_at')
 
     def get_user(self, obj):
         output = {}
@@ -30,6 +32,7 @@ class CommentSerializer(ModelSerializer):
         for comment in comments:
             comment_dict['user'] = str(comment.user)
             comment_dict['reply'] = {
+                'id': str(comment.id),
                 'text': comment.comment,
                 'created_at': str(comment.created_at),
                 'parent_id': str(comment.parent_id)
@@ -42,11 +45,11 @@ class CommentSerializer(ModelSerializer):
 
 
 class CreateCommentSerializer(ModelSerializer):
-    parent = PrimaryKeyRelatedField()
-
+    
     class Meta:
         model = Comment
         fields = ('comment', 'parent')
+
 
 
 class SaveCommentSerializer(ModelSerializer):
