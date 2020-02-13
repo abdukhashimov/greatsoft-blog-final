@@ -29,6 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserInfoSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.FileField()
     class Meta:
         model = UserInfo
         fields = ('bio', 'profile_picture')

@@ -54,7 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class UserInfo(models.Model):
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User, related_name='profile',
         on_delete=models.CASCADE, null=True, blank=True)
     bio = models.CharField(max_length=255, blank=True, null=True)
