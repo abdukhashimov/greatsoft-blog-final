@@ -35,8 +35,8 @@ class Comment(models.Model):
 
     def __str__(self):
         if self.parent is None:
-            return "{}'s comment".format(str(self.user))
-        return "{}'s reply".format(str(self.user))
+            return "{}'s comment on {}".format(str(self.user), str(self.post))
+        return "{}'s reply on {}".format(str(self.user), str(self.post))
 
     @property
     def parent_comments(self):

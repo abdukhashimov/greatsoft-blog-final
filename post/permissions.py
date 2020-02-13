@@ -18,6 +18,8 @@ class IsAdminOrReadOnly(BasePermission):
 class IsPostCorrect(BasePermission):
     def has_object_permission(self, request, view, obj):
         cust_id = request.data.get('parent')
+        if not cust_id:
+            return True
         for comment in obj.get_comments:
             if str(comment.id) == str(cust_id):
                 return True
