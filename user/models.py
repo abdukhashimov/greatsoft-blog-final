@@ -47,15 +47,19 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @property
     def get_profile_picture(self):
-        return "http://localhost:8000" + self.profile.profile_picture.url
+        try:
+            return "http://localhost:8000" + self.profile.profile_picture.url
+        except Exception as e:
+            return None
 
 
 class UserInfo(models.Model):
     user = models.OneToOneField(
         User, related_name='profile',
         on_delete=models.CASCADE, null=True, blank=True)
-    bio = models.CharField(max_length=255)
-    profile_picture = models.ImageField(upload_to='profiles')
+    bio = models.CharField(max_length=255, blank=True, null=True)
+    profile_picture = models.ImageField(
+        upload_to='profiles', blank=True, null=True)
 
     def __str__(self):
         return str(self.user)
