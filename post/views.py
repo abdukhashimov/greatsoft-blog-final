@@ -25,9 +25,7 @@ class PostViewSet(ModelViewSet):
     def get_permissions(self):
         if self.action == 'list' or self.action == 'retrieve':
             permission_classes = [AllowAny, ]
-        elif self.action == 'create':
-            permission_classes = [IsAuthenticated, ]
-        elif self.action == 'post_comment':
+        elif self.action in ('create', 'post_comment'):
             permission_classes = [IsAuthenticated, IsPostCorrect]
         else:
             permission_classes = [IsAuthorOrReadOnly, ]

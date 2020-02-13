@@ -45,7 +45,6 @@ class CommentSerializer(ModelSerializer):
 
 
 class CreateCommentSerializer(ModelSerializer):
-    
     class Meta:
         model = Comment
         fields = ('comment', 'parent')

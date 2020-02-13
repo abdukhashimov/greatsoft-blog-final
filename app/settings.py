@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # end of default apps
     'rest_framework',
+    'ckeditor',
+    'ckeditor_uploader',
     # third-party apps
     # end of third party apps
 
@@ -117,6 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # media url and root setup
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -125,3 +128,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # custom user model setup
 AUTH_USER_MODEL = 'user.User'
 # end of custom user setup
+
+
+# Ckeditor settings
+# Ckeditor file uploads
+CKEDITOR_UPLOAD_PATH = "uploads/"
+# end of the ckeditor uploads
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'default',
+        'extraPlugins': ', '.join(
+            ['youtube', 'codesnippet', ]
+        ),
+    },
+}
+# end of the setting

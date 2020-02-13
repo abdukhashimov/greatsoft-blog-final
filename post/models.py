@@ -4,6 +4,7 @@ from post.validators.validate_post import (
     validate_post_title
 )
 from django.contrib.auth import get_user_model
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -28,7 +29,7 @@ class Post(models.Model):
     thumbnail = models.ImageField(
         upload_to="thumbnails", blank=True, null=True)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    content = models.TextField()
+    content = RichTextField()
     tag = models.ManyToManyField(Tag, blank=True)
     category = models.ManyToManyField(Category)
     timestamp = models.DateTimeField(auto_now_add=True)
